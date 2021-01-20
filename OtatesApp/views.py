@@ -1,10 +1,15 @@
-from django.shortcuts import render, HttpResponse
-from OtatesApp.forms  import FormProveedores,FormSucursales, FormEgreso, FormIngreso
-from OtatesApp.models  import Proveedor, Sucursal,Ingreso,Egreso, Empleado
+from django.shortcuts import render #, HttpResponse
+from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib import messages
 from django.db.utils import IntegrityError, DataError
 from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate, logout
 import xlwt
 import datetime
+from OtatesApp.forms  import FormProveedores,FormSucursales, FormEgreso, FormIngreso
+from OtatesApp.models  import Proveedor, Sucursal,Ingreso,Egreso, Empleado
+
 
 # Create your views here.
 
@@ -301,3 +306,21 @@ def exportExcel(request,tipo):
                 ws.write(row_num, col_num, row[col_num], font_style)
     wb.save(response)
     return response
+
+def login(request):
+    if request.method=="POST":
+        username=request.POST['username']
+        password=request.POST['password']
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+        else:
+            return render(request,"OtatesApp/login.html",{'login_fail':True})
+
+        if user.is_authenticated:
+            return render(request,"OtatesApp/home.html")
+    
+
+    return render(request,"OtatesApp/login.html")
+    

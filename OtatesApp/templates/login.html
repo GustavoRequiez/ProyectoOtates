@@ -1,0 +1,64 @@
+{% extends "OtatesApp/base.html"%}
+
+{% load static %}
+
+{% block content%}
+
+<h1 style="text-align: center; color:darkblue;">
+    <strong>
+        INICIO DE SESIÓN
+    </strong>
+</h1>
+
+{% if login_fail %}
+    <h4 style="text-align: center; color:red">
+        <strong>
+            USUARIO Y/O CONTRASEÑA INCORRECTOS
+        </strong>
+    </h4>
+{% endif %}
+
+<form id="login-form" method="POST" action="">
+    {% csrf_token %}
+    <div>
+        <table>
+            <tr>
+                <th style="width: 100px;" ><label for="id_username">Usuario:</label></th>
+                <td style="width: 100px;" ><input type="text" name="username" id="id_username" required placeholder="Ingresa tu nombre de usuario"></td>
+            </tr>
+        </table>
+        <div style="height: 5px;"></div>
+        <table >
+            <tr>
+                <th style="width: 100px;" ><label for="id_pass">Contraseña:</label></th>
+                <td style="width: 100px;" ><input type="password" name="password"  id="id_pass" required placeholder="Ingresa tu contraseña" ></td>
+            </tr>
+        </table>
+        <div style="height: 5px;"></div>
+        <div style="margin: auto; width: fit-content;">
+            <input type="submit" value="Iniciar" class="btn btn-info" role="button"/>
+        </div>
+    </div>
+</form>
+<!--<form action="" method="POST">{% csrf_token %}
+    <div>
+        <table>
+            <tr>
+                <th style="width: 100px;" ><label for="id_nombreusuario">Usuario:</label></th>
+                <td style="width: 100px;" ><input type="text" name="nombreusuario" id="id_nombreusuario" required placeholder="Ingresa tu nombre de usuario"></td>
+            </tr>
+        </table>
+        <div style="height: 5px;"></div>
+        <table >
+            <tr>
+                <th style="width: 100px;" ><label for="id_contrasena">Contraseña:</label></th>
+                <td style="width: 100px;" ><input type="password" name="contrasena"  id="id_contrasena" required placeholder="Ingresa tu contraseña" ></td>
+            </tr>
+        </table>
+        <div style="height: 5px;"></div>
+        <div style="margin: auto; width: fit-content;">
+            <input type="submit" value="Iniciar" class="btn btn-info" role="button"/>
+        </div>
+    </div>
+</form>-->
+{% endblock %}

@@ -15,9 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth.decorators import login_required
+from usuario.views import Login,CerrarSesion
+
 
 urlpatterns = [
     path('admin/', admin.site.urls, name="admin"),
     path('', include('OtatesApp.urls')),
+    path('accounts/login/', Login.as_view(), name="login"),
+    path('logout/', login_required(CerrarSesion), name="logout"),
+    
 
 ]

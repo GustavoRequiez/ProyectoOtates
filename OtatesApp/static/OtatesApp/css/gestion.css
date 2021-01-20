@@ -232,7 +232,8 @@ p {
 }
 
 .footer {
-   background-color: rgba(24, 64, 8, 0.8);
+  background-color: rgba(24, 64, 8);
+
 }
 
 
@@ -289,7 +290,6 @@ ul.errorlist{
 }
 
 .formulariobusqueda{
-  /*background-color: rgba(24, 64, 8);*/
   color: black;
   margin: auto;
   width: fit-content;

@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+
+import os
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,6 +27,8 @@ SECRET_KEY = 'rybg!h7ucu5i2inf5_598@awa*$eizl35(kgj*sqrkr0ax1_af'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+#DEBUG = True
+
 
 ALLOWED_HOSTS = [
     '23.239.22.100',
@@ -34,7 +39,6 @@ ALLOWED_HOSTS = [
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,6 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'OtatesApp',
+    'import_export',
+    'usuario',
 ]
 
 MIDDLEWARE = [
@@ -88,14 +94,16 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432',
     }
-    # 'default': {
+
+    #'default': {
     #    'ENGINE': 'mysql_cymysql',
     #    'NAME': 'db_proyectootates',
     #    'USER': 'root',
     #    'PASSWORD': 'requiez',
     #    'HOST': '127.0.0.1',
     #    'PORT': '3306',
-    # }
+    #}
+     
 }
 
 
@@ -121,9 +129,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'es-mx'  # 'en-us'
+LANGUAGE_CODE = 'es-mx'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Mexico_City'
 
 USE_I18N = True
 
@@ -134,10 +142,5 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
-import os
 STATIC_URL = '/static/'
-#STATICFILES_DIRS = os.path.join((BASE_DIR, '/OtatesApp/static'))
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-#MEDIA_URL = '/media/'
-#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
